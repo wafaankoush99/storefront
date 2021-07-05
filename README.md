@@ -23,7 +23,7 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
 - A `<Products>` component
          - Displays a list of products associated with the selected category
 
-### [Deployed Link] (https://60e2c171f36dd516d1fc7788--hungry-jang-5724fb.netlify.app/)
+### [Deployed Link](https://60e2c171f36dd516d1fc7788--hungry-jang-5724fb.netlify.app/)
 
 ### UML Diagram 
 
