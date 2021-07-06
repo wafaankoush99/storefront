@@ -1,7 +1,5 @@
 # storefront
 
-Virtual Store Phase 1: For this assignment, you will be starting the process of creating an e-Commerce storefront using React with Redux, coupled with your live API server
-
 ## Phase 1 ~
 
 In this first phase, our goal is to setup the basic scaffolding of the application with initial styling and basic behaviors. This initial build sets up the file structure and state management so that we can progressively build this application in a scalable manner
@@ -30,6 +28,48 @@ In this first phase, our goal is to setup the basic scaffolding of the applicati
 [Show Full Board](https://miro.com/welcomeonboard/UnVHaE40R05ObzJxdUhJSFhjc0p0WkYxS204a2IyNDNpUlo0NXJHQnJTejBPZmNyWjBKRTd2bnJlQm80Tm9NeHwzMDc0NDU3MzU3MzU4Mjc2Mjk1)
 
 ![Untitled (31)](https://user-images.githubusercontent.com/78326110/124442485-75b33600-dd85-11eb-9016-bd3a45d511f5.jpg)
+
+***
+
+## Phase 2 ~
+
+In phase 2, we will be adding the “Add to Cart” feature to our application, which will allow our users to not only browse items in the store, but also select them and have them persist in their “shopping cart” for later purchase.
+
+- As a user, I want to choose from products in the list and add them to my shopping cart
+- As a user, I want to see the products that I’ve added to my shopping cart so that
+- As a user, I want to change the quantity of items I intend to purchase in my shopping cart
+- As a user, I want to be able to remove an item from my shopping cart
+
+### Application Architecture 
+
+- Add a new component to the page: `<SimpleCart />`
+
+     - Displays a short list (title only) of products in the cart
+     - This should be present at all times
+     - 
+- Home Page Operation:
+                       - When the user selects (clicks on) a category …
+                                  - Identify that category as selected
+                                  - Show a list of products associated with the category, that have a quantity > 0
+                                  - Add an “add to cart” button to each product
+
+             
+- When a user clicks the “add to cart” button add the item to their cart
+         - In the `<SimpleCart/>` component, show a running list of the items in the cart (just the titles)
+         - Change the (0) indicator in the header to show the actual number of items in the cart
+         - Reduce the number in stock for that product
+
+
+### [Deployed Link](https://60e431b91a292a11488f02c7--lucid-franklin-71fcfe.netlify.app/)
+
+### UML Diagram 
+
+[Show Full Board](https://miro.com/welcomeonboard/UnVHaE40R05ObzJxdUhJSFhjc0p0WkYxS204a2IyNDNpUlo0NXJHQnJTejBPZmNyWjBKRTd2bnJlQm80Tm9NeHwzMDc0NDU3MzU3MzU4Mjc2Mjk1)
+
+![STORE FRONT](https://user-images.githubusercontent.com/78326110/124586988-cd25d480-de5f-11eb-9c55-dbaa4c58e0a9.jpg)
+
+
+
 
 
 
