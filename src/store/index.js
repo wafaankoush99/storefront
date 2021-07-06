@@ -2,7 +2,13 @@ import { createStore, combineReducers } from "redux";
 import CatReducer from "./CategoryStore";
 import ProductReducer from "./ProductsStore";
 
-let reducers = combineReducers({ CatReducer, ProductReducer });
+import CartReducer from "./CartReducer"
+
+let reducers = combineReducers({
+  CatReducer,
+  ProductReducer,
+  CartReducer
+});
 
 const myStore = () => {
   return createStore(reducers);

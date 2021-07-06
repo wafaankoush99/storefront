@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardMedia, CardActions, Typography, Button } from "@material-ui/core";
 // import Typography from "@material-ui/core/Typography";
-
-
+import { addToMyCart } from "../store/ProductsStore";
 
 
 
@@ -16,6 +15,7 @@ const stateMapProps = (state) => ({
   categories: state.CatReducer.categories,
 });
 
+const dispatchToProps = { addToMyCart };
 
 const styling = makeStyles({
   root: {
@@ -28,7 +28,7 @@ const styling = makeStyles({
   },
 });
 
-function Products(props) {
+function items(props) {
   // console.log(props);
   let calss = styling();
 
@@ -40,47 +40,53 @@ function Products(props) {
       {/* {props.Prod}  */}
       {/* <h1>Flowers</h1> */}
       <div className="cards">
-      {props.Prod.map((it, i) => {
-        return (
-          <>
+        {props.Prod.map((it, i) => {
+
+          if (it.quantity === 0) {
+            return;
+          }
+
+          return (
+            <>
 
 
-<Card className={calss.root}  key={i}  id="cards">
-              <CardMedia
-                className={calss.media}
-                image={it.image} />
-              <CardContent>
+              <Card className={calss.root} key={i} id="cards">
+                <CardMedia
+                  className={calss.media}
+                  image={it.image} />
+                <CardContent>
 
-                <Typography gutterBottom variant="h4" >
-                  {it.name}
-                </Typography>
+                  <Typography gutterBottom variant="h4" >
+                    {it.name}
+                  </Typography>
 
-                <Typography variant="" color="textSecondary" component="p">
-                  {it.price}$
-                </Typography>
+                  <Typography variant="" color="textSecondary" component="p">
+                    {it.price}$
+                  </Typography>
 
-              </CardContent>
+                </CardContent>
 
-              <CardActions>
+                <CardActions>
 
-                <Button size="small" color="primary">
-                  Add to Cart
-                </Button>
+                  <Button size="small" color="primary"
+                  onClick={() => props.addToMyCart(it)}>
+                    Add to Cart
+                  </Button>
 
-                <Button size="small" color="primary">
-                  View Details
-                </Button>
+                  <Button size="small" color="primary">
+                    View Details
+                  </Button>
 
-              </CardActions>
-            </Card>
+                </CardActions>
+              </Card>
 
-          
-          </>
-        );
-      })}
+
+            </>
+          );
+        })}
       </div>
     </>
   );
 }
 
-export default connect(stateMapProps)(Products);
+export default connect(stateMapProps, dispatchToProps)(items);
