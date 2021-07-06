@@ -1,5 +1,6 @@
 Header {
     border-bottom: 1px solid #DDD;
+    height: 40px;
 }
 
 footer {
@@ -17,5 +18,12 @@ footer {
     flex-wrap: wrap;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.myCart {
+    position: absolute;
+    left: 1262px;
+    top: 12px;
+    width: 86px;
 }
 

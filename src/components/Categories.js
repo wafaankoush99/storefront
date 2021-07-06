@@ -7,15 +7,31 @@ import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 // import Typography from "@material-ui/core/Typography";
 
+// import Paper from "@material-ui/core/Paper";
 
-const mapStateToProps = (state) => ({
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+// import { Typography } from "@material-ui/core/";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 700,
+    margin: "auto",
+  },
+});
+
+
+
+const stateMapProps = (state) => ({
   categories: state.CatReducer.categories,
 });
 
-const mapDispatchToProps = { activeCatFun };
+const dispatchToProps = { activeCatFun };
 
 
 const Categories = (props) => {
+  const classes = useStyles();
+
 
   // console.log(props)
   return (
@@ -23,21 +39,24 @@ const Categories = (props) => {
     <>
       <h3>Browse our Categories</h3>
 
-      <Paper >
-        {props.categories.map((cat, i) => {
-          return (
-            <>
-              <Tab
-                label={cat.displayName}
-                key={i}
-                onClick={() => {
-                  props.activeCatFun(cat)
-                }
-                }
-              ></Tab>
-            </>
-          );
-        })}
+      <Paper className={classes.root}>
+        <Tabs centered>
+          {props.categories.map((cat, i) => {
+            return (
+              <>
+                <Tab
+                  label={cat.displayName}
+                  key={i}
+                  onClick={() => {
+                    props.activeCatFun(cat)
+                  }
+                  }
+                ></Tab>
+              </>
+            );
+          })}
+        </Tabs>
+
       </Paper>
     </>
 
@@ -48,4 +67,4 @@ const Categories = (props) => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default connect(stateMapProps, dispatchToProps)(Categories);
