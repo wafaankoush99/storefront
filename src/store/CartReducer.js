@@ -4,19 +4,22 @@ let myCart = {
   
   const CartReducer = (state = myCart, action) => {
     let { type, payload } = action;
-  
+    let myNewCart = [];
+
     switch (type) {
-      case "addToMyCart":
+      case "PUT":
         if (!state.cart.includes(payload)) {
-          state.cart.push(payload);
-          payload.count = 1;
-        } else if (payload.quantity > 0) {
-          state.cart.push(payload);
-          payload.count++;
+          myNewCart = {...state, cart: myNewCart};
+
+        //   state.cart.push(payload);
+        //   payload.count = 1;
+        // } else if (payload.quantity > 0) {
+        //   state.cart.push(payload);
+        //   payload.count++;
         }
         return { ...state };
   
-      case "RemoveItem":
+      case "PUT_REMOVE":
         let newCart = state.cart.filter((item) => {
           return item.name !== payload.name;
         });
@@ -28,11 +31,11 @@ let myCart = {
     }
   };
   
-  export const remove = (payload) => {
-    return {
-      type: "RemoveItem",
-      payload: payload,
-    };
-  };
+  // export const remove = (payload) => {
+  //   return {
+  //     type: "RemoveItem",
+  //     payload: payload,
+  //   };
+  // };
   export default CartReducer;
   

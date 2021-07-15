@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { activeCatFun } from "../store/CategoryStore";
+import { getRemoteData } from "../store/action";
+import { useEffect } from "react";
 
 import Paper from "@material-ui/core/Paper";
 // import Tabs from "@material-ui/core/Tabs";
@@ -26,10 +28,14 @@ const stateMapProps = (state) => ({
   categories: state.CatReducer.categories,
 });
 
-const dispatchToProps = { activeCatFun };
+const dispatchToProps = { activeCatFun, getRemoteData };
 
 
 const Categories = (props) => {
+  useEffect(() => {
+    props.getRemoteData();
+  }, []);
+  
   const classes = useStyles();
 
 

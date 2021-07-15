@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { remove } from "../store/CartReducer";
+import { updateRemoteDataAfterDeleteFromCart } from "../store/action";
 
 /*materials*/
 import Button from "@material-ui/core/Button";
@@ -13,7 +13,7 @@ const stateMapProps = (state) => ({
   UserCart: state.CartReducer,
 });
 
-const dispatchToProps = { remove };
+const dispatchToProps = { updateRemoteDataAfterDeleteFromCart };
 
 const Cart = (props) => {
   return (
@@ -36,7 +36,12 @@ const Cart = (props) => {
                     <MenuItem>
 
                       {it.name} &nbsp;{" "}
-                      <BackspaceIcon onClick={() => props.remove(it)} />
+                      <BackspaceIcon onClick={() => props.updateRemoteDataAfterDeleteFromCart(
+                        item._id,
+                        item.quantity,
+                        item.cartCount
+                      )
+                      } />
 
                     </MenuItem>
                   </>

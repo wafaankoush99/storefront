@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardMedia, CardActions, Typography, Button } from "@material-ui/core";
 // import Typography from "@material-ui/core/Typography";
-import { addToMyCart } from "../store/ProductsStore";
+// import { addToMyCart } from "../store/ProductsStore";
 
+import { updateRemoteData } from "../store/action";
 
 
 
@@ -15,7 +16,7 @@ const stateMapProps = (state) => ({
   categories: state.CatReducer.categories,
 });
 
-const dispatchToProps = { addToMyCart };
+const dispatchToProps = { updateRemoteData };
 
 const styling = makeStyles({
   root: {
@@ -41,7 +42,6 @@ function items(props) {
       {/* <h1>Flowers</h1> */}
       <div className="cards">
         {props.Prod.map((it, i) => {
-
           if (it.quantity === 0) {
             return;
           }
@@ -69,7 +69,7 @@ function items(props) {
                 <CardActions>
 
                   <Button size="small" color="primary"
-                  onClick={() => props.addToMyCart(it)}>
+                  onClick={() => props.updateRemoteData(it)}>
                     Add to Cart
                   </Button>
 

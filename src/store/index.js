@@ -1,7 +1,7 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import CatReducer from "./CategoryStore";
 import ProductReducer from "./ProductsStore";
-
+import thunk from "./thunkMiddleWare";
 import CartReducer from "./CartReducer"
 
 let reducers = combineReducers({
@@ -11,7 +11,7 @@ let reducers = combineReducers({
 });
 
 const myStore = () => {
-  return createStore(reducers);
+  return createStore(reducers, applyMiddleware(thunk));
 };
 
 export default myStore();
