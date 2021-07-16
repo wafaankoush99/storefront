@@ -69,6 +69,35 @@ In phase 2, we will be adding the “Add to Cart” feature to our application, 
 ![STORE FRONT](https://user-images.githubusercontent.com/78326110/124586988-cd25d480-de5f-11eb-9c55-dbaa4c58e0a9.jpg)
 
 
+***
+
+## Phase 3 ~
+
+In phase 3, we will be connecting our Virtual Store to a live API so that our data is persistent and able to be separately managed.
+
+- As a user, I want to interact with live inventory so that I have confidence that the displayed products are in stock
+- As a user, I want to know to that when I add an item to my cart, that it is removed from inventory so that no other users can purchase it
+
+### Application Architecture 
+
+- `useEffect()` to dispatch a load action on the initial page load
+        - This will need to use thunk as it will be asynchronous
+
+
+- When adding/removing/updating items in the cart, the action/reducer will need to update the server
+       - Perform the appropriate post, put, or delete action via API call (using thunk in an async action) on each of these actions as performed by the users
+
+
+### [Deployed Link](https://60f1eb5c9160211285e7bb3a--peaceful-clarke-6d5fd2.netlify.app/)
+
+### UML Diagram 
+
+[Show Full Board](https://miro.com/welcomeonboard/bm1lR05FN2RUcDBkOVVvdkttZnlqOW9VQ0x2VVo5TGJvemc4RjBCdXFBQ0FQQ243VHltc1JxUHU3bElLMDhZYnwzMDc0NDU3MzU3MzU4Mjc2Mjk1)
+
+![Untitled (34)](https://user-images.githubusercontent.com/78326110/126005953-1abd27ed-217f-4416-8868-702a24d853ec.jpg)
+
+
+
 
 
 
