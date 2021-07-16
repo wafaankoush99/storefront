@@ -2,20 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardMedia, CardActions, Typography, Button } from "@material-ui/core";
-// import Typography from "@material-ui/core/Typography";
-import { addToMyCart } from "../store/ProductsStore";
+import { updateRemoteData } from "../store/action";
 
-
-
-
-
-const stateMapProps = (state) => ({
-
-  Prod: state.ProductReducer.listOfProducts,
-  categories: state.CatReducer.categories,
-});
-
-const dispatchToProps = { addToMyCart };
 
 const styling = makeStyles({
   root: {
@@ -28,59 +16,66 @@ const styling = makeStyles({
   },
 });
 
-function items(props) {
-  // console.log(props);
-  let calss = styling();
+
+const stateMapProps = (state) => ({
+  Pro: state.ProductReducer.productsList,
+  categories: state.CatReducer.categories,
+});
+
+const dispatchToProps = { updateRemoteData };
 
 
+function Products(props) {
+  const classes = styling();
 
   return (
     <>
+      <div className="cards" >
 
-      {/* {props.Prod}  */}
-      {/* <h1>Flowers</h1> */}
-      <div className="cards">
-        {props.Prod.map((it, i) => {
 
-          if (it.quantity === 0) {
+
+        {props.Pro.map((it, i) => {
+          if (it.inventory == 0) {
             return;
           }
 
           return (
             <>
-
-
-              <Card className={calss.root} key={i} id="cards">
-                <CardMedia
-                  className={calss.media}
-                  image={it.image} />
+              <Card key={i} className={classes.root} id="cards" >
+                <CardMedia className={classes.media} image={it.image} />
                 <CardContent>
-
-                  <Typography gutterBottom variant="h4" >
-                    {it.name}
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {it.item}
                   </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
 
-                  <Typography variant="" color="textSecondary" component="p">
-                    {it.price}$
+                    {it.description}
+
+                    <br></br>
+
+                    <h3>
+                      Price: {it.price} $
+                    </h3>
                   </Typography>
-
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    <h3>
+                      Quantity Available: {it.inventory}
+                    </h3>
+                  </Typography>
                 </CardContent>
-
                 <CardActions>
-
-                  <Button size="small" color="primary"
-                  onClick={() => props.addToMyCart(it)}>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => props.updateRemoteData(item)}
+                  >
                     Add to Cart
                   </Button>
-
                   <Button size="small" color="primary">
                     View Details
                   </Button>
-
                 </CardActions>
               </Card>
-
-
             </>
           );
         })}
@@ -89,4 +84,6 @@ function items(props) {
   );
 }
 
-export default connect(stateMapProps, dispatchToProps)(items);
+
+
+export default connect(stateMapProps, dispatchToProps)(Products);
