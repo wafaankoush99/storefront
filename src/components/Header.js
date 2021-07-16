@@ -1,23 +1,19 @@
 import React from "react";
-import "./SASS/style.scss";
-
 import Cart from "./Cart";
 import { connect } from "react-redux";
 
 
-const stateMapProps = (state) => ({
-  UserCart: state.CartReducer,
-});
-
-
-function Header() {
+function Header(props) {
   return (
     <header>
-      <h2> OUR STORE </h2> 
+      <h1> OUR STORE </h1>
         <Cart />
     </header>
   );
 }
 
+const stateMapProps = (state) => ({
+  UserCart: state.CartReducer,
+});
 
 export default connect(stateMapProps)(Header);

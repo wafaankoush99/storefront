@@ -1,7 +1,6 @@
 import React from 'react';
 import "./SASS/style.scss"
 
-
 export default function Footer (){
     return (
         <>

@@ -1,19 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateRemoteDataAfterDeleteFromCart } from "../store/action";
-
-/*materials*/
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import BackspaceIcon from "@material-ui/icons/Backspace";
+import { updateRemoteDataAfterDeleteFromCart } from "../store/action";
 
 const stateMapProps = (state) => ({
   UserCart: state.CartReducer,
 });
 
-const dispatchToProps = { updateRemoteDataAfterDeleteFromCart };
+const dispatchToProps = {
+  updateRemoteDataAfterDeleteFromCart,
+};
+
 
 const Cart = (props) => {
   return (
@@ -27,29 +28,29 @@ const Cart = (props) => {
             </Button>
           </div>
 
-          <Menu {...bindMenu(popupState)}>
+          <Menu
+            {...bindMenu(popupState)}>
             {props.UserCart.cart.map((it) => {
-
               {
                 return (
                   <>
                     <MenuItem>
-
-                      {it.name} &nbsp;{" "}
-                      <BackspaceIcon onClick={() => props.updateRemoteDataAfterDeleteFromCart(
-                        item._id,
-                        item.quantity,
-                        item.cartCount
-                      )
-                      } />
-
+                      {it.item} &nbsp;{" "}
+                      <BackspaceIcon
+                        onClick={() =>
+                          props.updateRemoteDataAfterDeleteFromCart(
+                            it._id,
+                            it.inventory,
+                            it.cartCount
+                          )
+                        }
+                      />
                     </MenuItem>
                   </>
                 );
               }
             })}
           </Menu>
-
         </React.Fragment>
       )}
     </PopupState>

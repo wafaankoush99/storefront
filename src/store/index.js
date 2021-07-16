@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import CatReducer from "./CategoryStore";
 import ProductReducer from "./ProductsStore";
+import CartReducer from "./CartReducer";
 import thunk from "./thunkMiddleWare";
-import CartReducer from "./CartReducer"
 
 let reducers = combineReducers({
   CatReducer,
   ProductReducer,
-  CartReducer
+  CartReducer,
 });
 
 const myStore = () => {

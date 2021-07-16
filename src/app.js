@@ -1,21 +1,21 @@
 import React from "react";
 import Header from "./components/Header";
-import Categories from "./components/Categories";
-import Products from "./components/Products";
 import Footer from "./components/Footer";
+import Category from "./components/Categories";
+import Products from "./components/Products";
 
 
 const App = (props) => {
   return (
-    <>
+    <div>
       <Header />
 
-      <Categories />
+      <Category />
 
       <Products />
 
       <Footer />
-    </>
+    </div>
   );
 };
 export default App;
