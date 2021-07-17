@@ -67,7 +67,7 @@ function Products(props) {
                   <Button
                     size="small"
                     color="primary"
-                    onClick={() => props.updateRemoteData(item)}
+                    onClick={() => props.updateRemoteData(it)}
                   >
                     Add to Cart
                   </Button>
