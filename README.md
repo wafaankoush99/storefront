@@ -88,7 +88,7 @@ In phase 3, we will be connecting our Virtual Store to a live API so that our da
        - Perform the appropriate post, put, or delete action via API call (using thunk in an async action) on each of these actions as performed by the users
 
 
-### [Deployed Link](https://60f1eb5c9160211285e7bb3a--peaceful-clarke-6d5fd2.netlify.app/)
+### [Deployed Link](https://60f2810fd737660007744bc3--peaceful-clarke-6d5fd2.netlify.app/)
 
 ### UML Diagram 
 
