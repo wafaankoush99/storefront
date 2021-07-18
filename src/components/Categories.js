@@ -1,8 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
-import { activeCat } from "../store/CategoryStore";
-import { getRemoteData } from "../store/action";
+import { ACTIVE } from "../store/CategoryStore";
+import { getRemoteData } from "../store/CategoryStore";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
@@ -15,28 +16,33 @@ const styling = makeStyles({
   },
 });
 
-const Category = (props) => {
+const Category = () => {
   useEffect(() => {
-    props.getRemoteData();
+    dispatch(getRemoteData());
   }, []);
+
+  const state = useSelector((state) => {
+    return {
+      categories: state.Category.categories,
+    };
+  });
+  const dispatch = useDispatch();
 
   const classes = styling();
 
   return (
     <>
-
-      <h3>Browse our Categories</h3>
-
+     <h3>Browse our Categories</h3>
       <Paper square className={classes.root}>
         <Tabs centered>
-          {props.categories.map((act, i) => {
+          {state.categories.map((it, i) => {
             return (
               <>
                 <Tab
                   color="info"
-                  label={act}
+                  label={it}
                   key={i}
-                  onClick={() => props.activeCat(act)}
+                  onClick={() => dispatch(ACTIVE(it))}
                 />
               </>
             );
@@ -47,10 +53,4 @@ const Category = (props) => {
   );
 };
 
-const stateMapProps = (state) => ({
-  categories: state.CatReducer.categories,
-});
-
-const dispatchToProps = { activeCat, getRemoteData };
-
-export default connect(stateMapProps, dispatchToProps)(Category);
+export default Category;
