@@ -96,6 +96,46 @@ In phase 3, we will be connecting our Virtual Store to a live API so that our da
 
 ![Untitled (34)](https://user-images.githubusercontent.com/78326110/126005953-1abd27ed-217f-4416-8868-702a24d853ec.jpg)
 
+***
+
+## Phase 3 ~
+
+In phase 4, we will be completing work on our Virtual Store by adding a two full page views to the application: Product Details and Checkout
+
+
+- As a user, I want to see a full detail view of a product so that I can make a more informed choice about purchasing it.
+- As a user, I want to view my full cart and initiate the checkout process so that I can purchase my items and have them delivered
+
+### Application Architecture 
+
+- Add `<BrowserRouter />` to your application
+
+- Create a new page component: `<ProductDetails />`
+
+
+               - Alter each product on the listing screen to have a new “Product Details” button
+               - When clicked, `<Link to...>` /products/## where ## is the product ID
+               - On this page, show an expanded view of the product, including placeholders for additional information such as reviews, suggestions, etc
+- Create a new page component: `<ShoppingCart />`
+- Link to this page from the Cart (x) in the header, on the /cart route
+- On this page, show:
+             - A summary of items in tabular format
+             - A final order total
+             - A form allowing the user to enter their billing/shipping address and credit card information
+             - On submit, simply draw an alert that says “Thank you for your purchase”
+             - We will not be processing transactions or storing orders just yet
+
+
+### [Deployed Link](https://60f44d8cd26293fc43ea75bc--jolly-noyce-e94bd6.netlify.app/)
+
+### UML Diagram 
+
+[Show Full Board](https://miro.com/welcomeonboard/bm1lR05FN2RUcDBkOVVvdkttZnlqOW9VQ0x2VVo5TGJvemc4RjBCdXFBQ0FQQ243VHltc1JxUHU3bElLMDhZYnwzMDc0NDU3MzU3MzU4Mjc2Mjk1)
+
+![storefront2](https://user-images.githubusercontent.com/78326110/126074134-182db2fa-db9a-44cd-b02e-5f4f6b275b71.jpg)
+
+
+
 
 
 
