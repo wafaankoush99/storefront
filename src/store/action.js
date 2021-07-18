@@ -1,17 +1,17 @@
 import superagent from "superagent";
-const api = "https://api-server-0.herokuapp.com/products";
+
+const myApi = "https://nihad-api-server.herokuapp.com/product";
 
 export const getRemoteData = () => (dispatch) => {
-  superagent.get(api).then((res) => {
+  superagent.get(myApi).then((res) => {
     dispatch(getAction(res.body));
   });
 };
 
-
 export const updateRemoteData = (it) => (dispatch) => {
   console.log(it);
   superagent
-    .put(`${api}/${it._id}`)
+    .put(`${myApi}/${it._id}`)
     .send({
       inventory: it.inventory - 1,
       cartCount: it.cartCount + 1,
@@ -22,9 +22,9 @@ export const updateRemoteData = (it) => (dispatch) => {
 };
 
 export const updateRemoteDataAfterDeleteFromCart =
-  (id, inventory, cartCount) => (dispatch, state) => {
+  (id, inventory, cartCount) => (dispatch) => {
     superagent
-      .put(`${api}/${id}`)
+      .put(`${myApi}/${id}`)
       .send({
         inventory: cartCount + inventory,
         cartCount: 0,

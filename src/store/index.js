@@ -1,17 +1,19 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import CatReducer from "./CategoryStore";
-import ProductReducer from "./ProductsStore";
-import CartReducer from "./CartReducer";
-import thunk from "./thunkMiddleWare";
+import { combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+import CategorySlice from "./CategoryStore";
 
 let reducers = combineReducers({
-  CatReducer,
-  ProductReducer,
-  CartReducer,
+  Category: CategorySlice,
 });
 
-const myStore = () => {
-  return createStore(reducers, applyMiddleware(thunk));
-};
 
-export default myStore();
+
+
+
+
+const myStore = configureStore({ reducer: reducers });
+
+export default myStore;
+
+
